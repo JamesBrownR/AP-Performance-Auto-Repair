@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AP Performance Auto | Oklahoma City Auto Repair</title>
+  <meta name="description" content="Full‑service auto repair in Oklahoma City. Honest prices, quality work, and fast turnaround. Call or book today." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --red:#E10600;     /* Ferrari red vibe */
+      --black:#111111;   /* Charcoal black */
+      --yellow:#FFCE00;  /* Safety yellow */
+      --white:#ffffff;
+      --gray:#f5f5f7;
+      --muted:#666;
+      --radius:16px;
+      --shadow:0 10px 25px rgba(0,0,0,.15);
+    }
+    html,body{margin:0;padding:0;background:var(--gray);color:#111;font-family:Roboto,system-ui,-apple-system,Segoe UI,Arial,sans-serif;}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(1100px,92%);margin-inline:auto}
+    .btn{display:inline-block;padding:.9rem 1.1rem;border-radius:999px;font-weight:700;letter-spacing:.2px;transition:transform .15s ease,box-shadow .2s ease}
+    .btn:active{transform:translateY(1px)}
+    .btn-primary{background:var(--red);color:var(--white);box-shadow:0 6px 16px rgba(225,6,0,.35)}
+    .btn-primary:hover{box-shadow:0 10px 24px rgba(225,6,0,.45)}
+    .btn-outline{border:2px solid var(--yellow);color:var(--black);background:transparent}
+    .badge{background:var(--yellow);color:#111;padding:.3rem .6rem;border-radius:999px;font-weight:700;font-size:.8rem}
+
+    /* Topbar */
+    .topbar{background:var(--black);color:var(--white)}
+    .topbar-inner{display:flex;gap:14px;align-items:center;justify-content:space-between;padding:.5rem 0}
+    .brand{display:flex;align-items:center;gap:.8rem}
+    .brand-logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--red),#9c0000);display:grid;place-items:center;box-shadow:var(--shadow)}
+    .brand strong{font-family:Montserrat,Roboto,sans-serif;font-weight:800;letter-spacing:.5px}
+
+    .contact-quick{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .contact-quick a{display:flex;align-items:center;gap:.45rem;padding:.5rem .8rem;border-radius:999px;background:#1a1a1a}
+    .contact-quick a:hover{background:#222}
+    .contact-quick .call{background:var(--red)}
+
+    .hero{background: linear-gradient(180deg, var(--black) 0%, #1a1a1a 100%);color:var(--white);position:relative;overflow:hidden}
+    .hero .container{padding:3.5rem 0}
+    .hero h1{font-family:Montserrat,Roboto,sans-serif;font-weight:800;line-height:1.05;margin:0 0 .6rem;font-size:clamp(2rem,4vw,3rem)}
+    .hero p{color:#e9e9e9;max-width:720px;font-size:1.05rem}
+
+    .hero-cta{margin-top:1.1rem;display:flex;gap:.7rem;flex-wrap:wrap}
+
+    .card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .section{padding:2.5rem 0}
+    h2.section-title{font-family:Montserrat,Roboto,sans-serif;font-size:clamp(1.4rem,2.5vw,2rem);margin:0 0 1rem;font-weight:800}
+
+    /* Services grid */
+    .grid{display:grid;gap:18px}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    @media (max-width:900px){.grid-3{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.grid-3,.grid-2{grid-template-columns:1fr}}
+
+    .service{padding:1rem}
+    .service h3{margin:.4rem 0 .3rem;font-weight:800}
+    .service p{color:#333}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    @media (max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:560px){.gallery{grid-template-columns:1fr}}
+    .gallery img{border-radius:12px;height:220px;object-fit:cover}
+
+    /* Info cards */
+    .info{display:grid;grid-template-columns:2fr 1.2fr;gap:18px}
+    @media (max-width:980px){.info{grid-template-columns:1fr}}
+    .hours table{width:100%;border-collapse:collapse}
+    .hours th,.hours td{padding:.6rem .4rem;text-align:left;border-bottom:1px solid #eee}
+    .hours .closed{font-weight:700;color:#a10000}
+
+    /* Reviews */
+    .reviews .item{padding:1rem}
+    .stars{display:flex;gap:2px}
+    .stars svg{width:18px;height:18px;fill:var(--yellow)}
+    .review-meta{display:flex;align-items:center;gap:.6rem;color:#555;font-size:.95rem}
+    .reviewer-avatar{width:40px;height:40px;border-radius:999px;background:#ddd;display:grid;place-items:center;font-weight:700}
+    .review-body{margin-top:.4rem;color:#111}
+
+    .show-more{display:block;width:100%;text-align:center;margin-top:.5rem}
+
+    /* Contact */
+    form{display:grid;gap:10px}
+    input,textarea{width:100%;padding:.8rem;border-radius:10px;border:1px solid #ddd;background:#fff;font:inherit}
+    input:focus,textarea:focus{outline:2px solid var(--yellow);border-color:var(--yellow)}
+    label{font-weight:700}
+
+    /* Footer */
+    footer{background:#0f0f0f;color:#eee;padding:2rem 0;margin-top:2rem}
+    footer a{color:#fff;text-decoration:underline}
+
+    /* Mobile sticky call */
+    .sticky-call{position:fixed;inset:auto 0 14px;display:none;justify-content:center;z-index:40}
+    .sticky-call .inner{background:var(--red);color:#fff;padding:.9rem 1.2rem;border-radius:999px;box-shadow:0 15px 35px rgba(225,6,0,.45);font-weight:800}
+    @media (max-width:760px){.sticky-call{display:flex}}
+
+    /* Utility */
+    .split{display:flex;gap:10px;flex-wrap:wrap}
+    .accent{color:var(--yellow)}
+    .on-red{color:#fff}
+    .on-yellow{color:#111}
+  </style>
+</head>
+<body>
+  <!-- Top Contact Bar -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand" aria-label="AP Performance Auto">
+        <div class="brand-logo" aria-hidden="true">
+          <!-- simple AP monogram -->
+          <svg width="28" height="28" viewBox="0 0 24 24" role="img" aria-label="AP">
+            <path fill="#FFCE00" d="M3 19l4-14h4l4 14h-3l-.8-3H6.8L6 19H3zm4.5-6h5L10 6.8 7.5 13z"/>
+          </svg>
+        </div>
+        <div>
+          <strong>AP Performance Auto</strong><br>
+          <span class="badge" aria-label="Five star shop">★★★★★ 5.0</span>
+        </div>
+      </div>
+      <div class="contact-quick">
+        <a class="call on-red" href="tel:+14053888176" aria-label="Call AP Performance Auto at 405-388-8176">
+          <!-- phone icon -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.1.37 2.3.57 3.58.57a1 1 0 011 1V21a1 1 0 01-1 1C10.3 22 2 13.7 2 3a1 1 0 011-1h3.49a1 1 0 011 1c0 1.27.2 2.48.57 3.57a1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
+          <strong>(405) 388‑8176</strong>
+        </a>
+        <a class="btn-outline" href="#map">Find us</a>
+        <!-- Square booking button: Replace YOUR_LOCATION_ID below with your actual Square Location ID -->
+        <a class="btn btn-primary" href="https://square.site/book/YOUR_LOCATION_ID" target="_blank" rel="noopener" title="Book an appointment">
+          Book Online
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <header class="hero" role="banner">
+    <div class="container">
+      <h1>Honest, high‑performance auto repair in OKC</h1>
+      <p>From diagnostics to full builds, AP Performance Auto keeps your car running strong. Fair pricing, clear communication, and quality parts—every time.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="tel:+14053888176">Call Now</a>
+        <a class="btn btn-outline" href="#contact">Get a Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Services -->
+  <section class="section container" id="services">
+    <h2 class="section-title">Popular Services</h2>
+    <div class="grid grid-3">
+      <div class="card service">
+        <h3>Diagnostics</h3>
+        <p>Check‑engine lights, drivability issues, electrical, misfires, and more—rapid testing with modern tools.</p>
+      </div>
+      <div class="card service">
+        <h3>Brakes & Suspension</h3>
+        <p>Rotors, pads, calipers, shocks/struts, alignments—get confident stopping and a smooth ride.</p>
+      </div>
+      <div class="card service">
+        <h3>Engines & Performance</h3>
+        <p>Repairs, swaps, tuning support and maintenance to keep things reliable and fast.</p>
+      </div>
+      <div class="card service">
+        <h3>Oil & Maintenance</h3>
+        <p>Oil changes, fluids, filters, belts—preventative care that saves money down the road.</p>
+      </div>
+      <div class="card service">
+        <h3>AC & Heating</h3>
+        <p>Stay comfortable year‑round with proper AC recharge, leak checks, and component service.</p>
+      </div>
+      <div class="card service">
+        <h3>Tires & Wheels</h3>
+        <p>New tires, rotations, balancing, and flat repair to maximize grip and tire life.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section container" id="gallery">
+    <h2 class="section-title">Shop Gallery</h2>
+    <div class="gallery">
+      <!-- Replace src with your own photos (e.g., /images/filename.jpg). Keep descriptive alt text. -->
+      <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?q=80&w=1200&auto=format&fit=crop" alt="Mechanic working under a lifted car" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1565043666747-69f6646db940?q=80&w=1200&auto=format&fit=crop" alt="Engine bay close‑up after service" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1519638399535-1b036603ac77?q=80&w=1200&auto=format&fit=crop" alt="Clean shop floor and tools" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1200&auto=format&fit=crop" alt="Brake service in progress" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1200&auto=format&fit=crop" alt="Alignment and suspension check" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop" alt="Performance car outside the shop" loading="lazy">
+    </div>
+  </section>
+
+  <!-- Info: Map + Hours/Contact quick facts -->
+  <section class="section container info" id="map">
+    <div class="card" style="overflow:hidden">
+      <iframe title="Google Map – AP Performance Auto" width="100%" height="420" style="border:0;display:block" loading="lazy" allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63815.26506775442!2d-97.86492219999999!3d35.5096843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87b21b9fcac5c863%3A0x5fba14a108295bd5!2sAP%20Performance%20Auto%20Repair%20Shop!5e0!3m2!1sen!2sus!4v1690000000000"></iframe>
+    </div>
+    <div class="grid grid-1">
+      <div class="card" style="padding:1rem">
+        <h2 class="section-title" style="margin-bottom:.4rem">Visit Us</h2>
+        <p><strong>Address:</strong> 4701 NW 39th St, Oklahoma City, OK 73122</p>
+        <p><strong>Phone:</strong> <a href="tel:+14053888176">(405) 388‑8176</a></p>
+        <p><strong>Email:</strong> <a href="mailto:info@apperformanceauto.com">info@apperformanceauto.com</a> <!-- replace with your email if different --></p>
+        <div class="hours" aria-label="Business Hours">
+          <table>
+            <tbody>
+              <tr><th scope="row">Sunday</th><td class="closed">Closed</td></tr>
+              <tr><th scope="row">Monday</th><td>9 AM – 7 PM</td></tr>
+              <tr><th scope="row">Tuesday</th><td>9 AM – 7 PM</td></tr>
+              <tr><th scope="row">Wednesday</th><td>9 AM – 7 PM</td></tr>
+              <tr><th scope="row">Thursday</th><td>9 AM – 7 PM</td></tr>
+              <tr><th scope="row">Friday</th><td>9 AM – 7 PM</td></tr>
+              <tr><th scope="row">Saturday</th><td>9 AM – 7 PM</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top:.8rem" class="split">
+          <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination=4701%20NW%2039th%20St%2C%20Oklahoma%20City%2C%20OK%2073122" target="_blank" rel="noopener">Get Directions</a>
+          <a class="btn btn-outline" href="sms:+14053888176">Text Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="section container reviews" id="reviews">
+    <h2 class="section-title">Customer Reviews</h2>
+    <div class="grid grid-2" id="reviewsGrid">
+      <!-- IMPORTANT: Do not change the main content of these reviews. Titles/names and star counts are fine, but keep the user-provided text exactly as-is. -->
+
+      <!-- 1 -->
+      <article class="card item" itemscope itemtype="https://schema.org/Review">
+        <div class="review-meta">
+          <div class="reviewer-avatar" aria-hidden="true">M2</div>
+          <div>
+            <strong itemprop="author">Maui 2x</strong>
+            <div class="stars" aria-label="5 out of 5 stars"> 
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+            <div style="color:#777;font-size:.9rem">Edited a year ago</div>
+          </div>
+        </div>
+        <p class="review-body" itemprop="reviewBody">Did a great job on my truck feels and looks amazing! Definitely will bring my other vehicles if needed!</p>
+      </article>
+
+      <!-- 2 -->
+      <article class="card item" itemscope itemtype="https://schema.org/Review">
+        <div class="review-meta">
+          <div class="reviewer-avatar" aria-hidden="true">AA</div>
+          <div>
+            <strong itemprop="author">Asad Aftab</strong>
+            <div class="stars" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+            <div style="color:#777;font-size:.9rem">10 months ago</div>
+          </div>
+        </div>
+        <p class="review-body" itemprop="reviewBody">Good shop, Amazing mechanic helped me with price and told me exactly what my car needed</p>
+      </article>
+
+      <!-- 3 -->
+      <article class="card item" itemscope itemtype="https://schema.org/Review">
+        <div class="review-meta">
+          <div class="reviewer-avatar" aria-hidden="true">CL</div>
+          <div>
+            <strong itemprop="author">Cellphone Laboratories</strong>
+            <div class="stars" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+            <div style="color:#777;font-size:.9rem">a year ago</div>
+          </div>
+        </div>
+        <p class="review-body" itemprop="reviewBody">Nice place !!! Good service</p>
+      </article>
+
+      <!-- 4 (intentionally empty body) -->
+      <article class="card item" itemscope itemtype="https://schema.org/Review">
+        <div class="review-meta">
+          <div class="reviewer-avatar" aria-hidden="true">TC</div>
+          <div>
+            <strong itemprop="author">Toxico CODM</strong>
+            <div class="stars" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+            <div style="color:#777;font-size:.9rem">3 months ago</div>
+          </div>
+        </div>
+        <p class="review-body" itemprop="reviewBody"></p>
+      </article>
+
+      <!-- 5 (intentionally empty body) -->
+      <article class="card item" itemscope itemtype="https://schema.org/Review">
+        <div class="review-meta">
+          <div class="reviewer-avatar" aria-hidden="true">GB</div>
+          <div>
+            <strong itemprop="author">Giovanni Briones</strong>
+            <div class="stars" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+            <div style="color:#777;font-size:.9rem">3 months ago</div>
+          </div>
+        </div>
+        <p class="review-body" itemprop="reviewBody"></p>
+      </article>
+
+      <!-- 6 (intentionally empty body) -->
+      <article class="card item" itemscope itemtype="https://schema.org/Review">
+        <div class="review-meta">
+          <div class="reviewer-avatar" aria-hidden="true">EP</div>
+          <div>
+            <strong itemprop="author">Erwin Palma</strong>
+            <div class="stars" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+            <div style="color:#777;font-size:.9rem">10 months ago</div>
+          </div>
+        </div>
+        <p class="review-body" itemprop="reviewBody"></p>
+      </article>
+
+      <!-- Additional reviews can be appended after this comment. Only 6 show initially. -->
+    </div>
+    <button id="showMoreBtn" class="btn btn-outline show-more" aria-expanded="false">Show More Reviews</button>
+  </section>
+
+  <!-- Contact form -->
+  <section class="section container" id="contact">
+    <div class="card" style="padding:1.2rem">
+      <h2 class="section-title">Request a Quote</h2>
+      <p style="margin-top:-.4rem;color:#333">Tell us about your vehicle and what you need. We typically respond the same day.</p>
+
+      <!-- EMAIL FORM (works on static hosting). Replace YOUR_EMAIL below with the shop email.
+           Option A (default): FormSubmit – no backend needed.
+           Action example: https://formsubmit.co/YOUR_EMAIL
+           Option B: change to mailto:info@... (less reliable) or connect GitHub Pages to a serverless form handler.
+      -->
+      <form action="https://formsubmit.co/YOUR_EMAIL" method="POST">
+        <input type="hidden" name="_subject" value="New quote request from AP Performance Auto website" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="text" name="name" placeholder="Your name" aria-label="Your name" required>
+        <input type="email" name="email" placeholder="Email" aria-label="Email" required>
+        <input type="tel" name="phone" placeholder="Phone" aria-label="Phone">
+        <input type="text" name="vehicle" placeholder="Vehicle (year/make/model)" aria-label="Vehicle">
+        <textarea name="message" rows="5" placeholder="Describe the issue or service needed" aria-label="Message" required></textarea>
+        <div class="split">
+          <button class="btn btn-primary" type="submit">Send Request</button>
+          <a class="btn btn-outline" href="tel:+14053888176">Or Call (405) 388‑8176</a>
+        </div>
+      </form>
+
+      <div style="margin-top:1rem;padding:.8rem;border-left:6px solid var(--yellow);background:#fff9d6;border-radius:8px">
+        <strong>Prefer to book online?</strong>
+        <!-- Replace YOUR_LOCATION_ID with your Square Location ID below. Example link pattern kept. -->
+        <a href="https://square.site/book/YOUR_LOCATION_ID" target="_blank" rel="noopener" class="accent">Book with Square →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="grid grid-3">
+        <div>
+          <h3 style="margin-top:0;font-family:Montserrat;font-weight:800;color:var(--yellow)">AP Performance Auto</h3>
+          <p>4701 NW 39th St<br>Oklahoma City, OK 73122</p>
+          <p><a href="tel:+14053888176">(405) 388‑8176</a></p>
+        </div>
+        <div>
+          <h4 style="margin-top:0">Quick Links</h4>
+          <p><a href="#services">Services</a> · <a href="#gallery">Gallery</a> · <a href="#reviews">Reviews</a> · <a href="#contact">Contact</a></p>
+          <p><a href="https://www.google.com/maps/place/AP+Performance+Auto+Repair+Shop/" target="_blank" rel="noopener">Google Map Listing</a></p>
+        </div>
+        <div>
+          <h4 style="margin-top:0">Hours</h4>
+          <p>Mon–Sat: 9 AM – 7 PM<br>Sun: Closed</p>
+        </div>
+      </div>
+      <p style="margin-top:1rem;color:#bbb">© <span id="year"></span> AP Performance Auto. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Mobile sticky call button -->
+  <div class="sticky-call" aria-hidden="false">
+    <a class="inner" href="tel:+14053888176">Call (405) 388‑8176</a>
+  </div>
+
+  <!-- Structured data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoRepair",
+    "name": "AP Performance Auto",
+    "image": "https://images.unsplash.com/photo-1542362567-b07e54358753?q=80&w=1200&auto=format&fit=crop",
+    "telephone": "+1-405-388-8176",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "4701 NW 39th St",
+      "addressLocality": "Oklahoma City",
+      "addressRegion": "OK",
+      "postalCode": "73122",
+      "addressCountry": "US"
+    },
+    "openingHoursSpecification": [
+      {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"19:00"},
+      {"@type":"OpeningHoursSpecification","dayOfWeek":["Sunday"],"opens":"00:00","closes":"00:00"}
+    ],
+    "geo": {"@type":"GeoCoordinates","latitude":35.5119786,"longitude":-97.6064806},
+    "url": "https://yourdomain.example",
+    "priceRange": "$$"
+  }
+  </script>
+
+  <script>
+    // current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Reviews: show 6 initially (default), reveal any additional appended later
+    const grid = document.getElementById('reviewsGrid');
+    const btn = document.getElementById('showMoreBtn');
+    function updateReviewsVisibility(){
+      const items = [...grid.querySelectorAll('.item')];
+      items.forEach((el, idx) => {
+        el.style.display = idx < 6 ? 'block' : 'none';
+      });
+      const hiddenCount = items.filter((_, idx) => idx >= 6).length;
+      btn.style.display = hiddenCount ? 'inline-block' : 'none';
+      btn.setAttribute('aria-expanded', hiddenCount ? 'false' : 'true');
+      btn.textContent = hiddenCount ? 'Show More Reviews' : 'All Reviews Shown';
+    }
+    updateReviewsVisibility();
+    btn.addEventListener('click', () => {
+      const items = grid.querySelectorAll('.item');
+      items.forEach(el => el.style.display = 'block');
+      btn.textContent = 'All Reviews Shown';
+      btn.setAttribute('aria-expanded','true');
+    });
+  </script>
+
+  <!--
+    IMPLEMENTATION NOTES (for GitHub Pages):
+    1) Save this as index.html at the root of your repo (e.g., AP-Performance-Auto-Repair).
+    2) Replace the following placeholders:
+       - YOUR_EMAIL  → The shop email address for the contact form (FormSubmit).
+       - YOUR_LOCATION_ID → Square Location ID in both booking links.
+    3) Replace gallery image src URLs with your own photos under /images for faster loads.
+    4) Optional: add a /CNAME file if using a custom domain.
+  -->
+</body>
+</html>
